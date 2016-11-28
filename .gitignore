@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.env/
+/.idea/
+/twistd.pid
+/media/
+/build/
+/eggs/
+/logs/
+/project.egg-info/
+/dbs/
+/articles/migrations/
