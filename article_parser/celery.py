@@ -27,4 +27,4 @@ app.autodiscover_tasks()
 def run_spider(self):
     call(['curl', 'http://localhost:6800/schedule.json', '-d', 'project=article_bot', '-d', 'spider=ArticleSpider'])
 
-run_spider.apply_async(countdown=86400)
+run_spider.apply_async(countdown=60 * 30)

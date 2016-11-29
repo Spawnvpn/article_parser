@@ -20,7 +20,9 @@ class ArticleSpider(scrapy.Spider):
             yield self.make_requests_from_url(link)
 
     def get_links(self):
-        start_urls = ['https://news.ycombinator.com/newest']
+        start_urls = ['https://news.ycombinator.com/newest', 'https://news.ycombinator.com/newest?n=31',
+                      'https://news.ycombinator.com/newest?n=61', 'https://news.ycombinator.com/newest?n=91',
+                      'https://news.ycombinator.com/newest?n=111']
         return start_urls
 
     def parse(self, response):
@@ -35,7 +37,7 @@ class ArticleSpider(scrapy.Spider):
         domain = json.loads(response.text).get('domain')
         url = json.loads(response.text).get('url')
         title = json.loads(response.text).get('title')
-        content = remove_tags(json.loads(response.text).get('content'))
+        content = json.loads(response.text).get('content')
         date_published = json.loads(response.text).get('date_published')
         item['domain'] = domain
         item['url'] = url

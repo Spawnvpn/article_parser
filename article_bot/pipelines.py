@@ -1,6 +1,5 @@
 import os
 import uuid
-
 from article_bot.settings import BASE_PATH
 from articles.models import Article
 
@@ -15,8 +14,8 @@ class ArticleParserPipeline(object):
         except:
             pass
 
-        if not Article.objects.filter(url=item['url']).exists():
-            filename = str(uuid.uuid4())
+        if not Article.objects.filter(url=item['url']).exists() and item['content']:
+            filename = str(uuid.uuid4()) + '.md'
             full_filename = os.path.join(BASE_PATH, folder, filename)
 
             with open(full_filename, "w") as text_file:
