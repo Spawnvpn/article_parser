@@ -8,16 +8,22 @@
 Vagrant.configure("2") do |config|
 config.vm.box = "bento/ubuntu-15.04"
 config.vm.provision :shell, path: "bootstrap.sh"
+config.vm.hostname = "master"
 config.ssh.forward_agent = true
 #config.vm.provision :shell, path: "server.sh"
 config.vm.network :forwarded_port, guest: 50070, guest_ip: "192.168.1.23", host: 50070,
     auto_correct: true
+config.vm.network :forwarded_port, guest: 50075, guest_ip: "192.168.1.23", host: 8042,
+    auto_correct: true
 config.vm.network :forwarded_port, guest: 8088, guest_ip: "192.168.1.23", host: 8088,
+    auto_correct: true
+config.vm.network :forwarded_port, guest: 8042, guest_ip: "192.168.1.23", host: 8042,
     auto_correct: true
 config.vm.network "public_network", ip: "192.168.1.23", bridge: "enp2s0",
     auto_correct: true
 config.vm.provider "virtualbox" do |v|
   v.memory = 2048
+  v.name = "master"
 end
 
   # The most common configuration options are documented and commented below.
