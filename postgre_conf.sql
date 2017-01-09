@@ -1,0 +1,3 @@
+CREATE DATABASE article_parser;
+CREATE USER admin WITH PASSWORD '123';
+GRANT ALL PRIVILEGES ON DATABASE article_parser TO admin;

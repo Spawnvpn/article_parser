@@ -97,7 +97,7 @@ PARSE_HANDLERS = {
 
 }
 
-sys.path.insert(0, '/home/bogdan/Projects/article_parser')
+sys.path.insert(0, '/home/vagrant/')
 BASE_PATH = sys.path[0]
 # Setting up django's settings module name.
 # This module is located at /home/rolando/projects/myweb/myweb/settings.py.

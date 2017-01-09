@@ -9,6 +9,6 @@ class Article(models.Model):
     title = models.CharField(max_length=255)
     date_published = models.CharField(max_length=255, null=True)
     date_stored = models.DateTimeField(auto_now=True)
-    content = models.FileField(upload_to='media')
+    content = models.FileField(upload_to='media', max_length=255)
 
     # def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
