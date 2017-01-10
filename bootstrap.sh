@@ -44,11 +44,14 @@ cp /home/vagrant/key.rsa.pub /vagrant/vagrant_worker2
 ssh-keyscan -H vagrant,192.168.1.23 >> /home/vagrant/.ssh/known_hosts
 sudo chown -R -v vagrant /home/vagrant/
 
+echo -e "192.168.1.24 \tworker1" >> /etc/hosts
+echo -e "192.168.1.25 \tworker2" >> /etc/hosts
+
 python2.7 /vagrant/hadoop_xml.py
 #sudo cp /vagrant/hadoop_unit /etc/systemd/system/
 #systemctl start SetupHadoopSettings
 
-su vagrant -c '/home/vagrant/hadoop-2.7.3/bin/hdfs namenode -format'
+#su vagrant -c '/home/vagrant/hadoop-2.7.3/bin/hdfs namenode -format'
 
 export PGPASSWORD='admin'
 
@@ -75,7 +78,7 @@ su vagrant -c '/home/vagrant/hadoop-2.7.3/sbin/start-yarn.sh'
 cp /vagrant/streaming.py /home/vagrant/spark-2.1.0-bin-hadoop2.7/
 cp /vagrant/streaming.py /home/vagrant/hadoop-2.7.3/
 cd /home/vagrant/spark-2.1.0-bin-hadoop2.7/
-su vagrant -c 'bin/spark-submit --deploy-mode cluster --master yarn streaming.py'
-source /vagrant/.env/bin/activate
-cd /vagrant/article_bot/spiders/
-su vagrant -c 'scrapy runspider article_spider.py'
+#su vagrant -c 'bin/spark-submit --deploy-mode cluster --master yarn streaming.py'
+#source /vagrant/.env/bin/activate
+#cd /vagrant/article_bot/spiders/
+#su vagrant -c 'scrapy runspider article_spider.py'

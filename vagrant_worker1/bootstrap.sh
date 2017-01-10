@@ -31,6 +31,7 @@ echo -e "\tStrictHostKeyChecking no" >> /etc/ssh/ssh_config
 ssh-keygen -f key.rsa -t rsa -N ''
 ssh-add key.rsa
 cat /vagrant/key.rsa.pub >> /home/vagrant/.ssh/authorized_keys
+cat /home/vagrant/key.rsa.pub >> /home/vagrant/.ssh/authorized_keys
 #cat /vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
 ssh-keyscan -H vagrant,192.168.1.23 >> /home/vagrant/.ssh/known_hosts
 ssh-keyscan -H vagrant,192.168.1.24 >> /home/vagrant/.ssh/known_hosts
